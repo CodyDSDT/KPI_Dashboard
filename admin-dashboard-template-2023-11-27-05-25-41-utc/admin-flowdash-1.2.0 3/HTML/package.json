@@ -8,7 +8,10 @@
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "serve": "lite-server -c node_modules/theme-mix/bs-config.json ./dist",
     "deploy": "surge --project ./dist --domain flowdash.dev.frontendmatter.com",
-    "html-validator-server": "java -cp node_modules/vnu-jar/build/dist/vnu.jar nu.validator.servlet.Main 8888"
+    "html-validator-server": "java -cp node_modules/vnu-jar/build/dist/vnu.jar nu.validator.servlet.Main 8888",
+    "etl": "ts-node scripts/etl.ts",
+    "test": "jest",
+    "type-check": "tsc --noEmit"
   },
   "author": "Frontted <contact@frontted.com> (http://themeforest.net/user/frontted/portfolio)",
   "license": "UNLICENSED",
@@ -47,10 +50,17 @@
     "bootstrap-vue": "2.13.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
+    "jest": "^29.5.0",
     "lite-server": "^2.2.0",
     "surge": "^0.21.6",
-    "theme-mix": "^1.1.0"
+    "theme-mix": "^1.1.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0",
+    "xlsx": "^0.18.5"
   }
 }

@@ -1,0 +1,62 @@
+<div class="container page__container">
+  <div class="page-section">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="fixed-objectives.html">Objectives</a></li>
+        <li class="breadcrumb-item active" id="breadcrumbObjective">Loading...</li>
+      </ol>
+    </nav>
+
+    <!-- Objective Header -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <div class="flex-fill">
+            <h1 class="h2 mb-2" id="objectiveName">Loading...</h1>
+            <p class="text-muted mb-0" id="objectiveDescription"></p>
+          </div>
+          <div class="ml-3">
+            <span class="badge" id="objectiveStatusBadge"></span>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-3">
+            <small class="text-muted d-block">Overall Progress</small>
+            <div class="h3 mb-0" id="objectiveProgress">0%</div>
+            <div class="progress mt-2" style="height: 8px;">
+              <div class="progress-bar" id="objectiveProgressBar" role="progressbar" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <small class="text-muted d-block">Strategies</small>
+            <div class="h3 mb-0" id="strategyCount">0</div>
+          </div>
+          <div class="col-md-3">
+            <small class="text-muted d-block">Total KPIs</small>
+            <div class="h3 mb-0" id="totalKPIs">0</div>
+          </div>
+          <div class="col-md-3">
+            <small class="text-muted d-block">Last Updated</small>
+            <div class="h6 mb-0" id="lastUpdated">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategies List -->
+    <h3 class="mb-3">Strategies</h3>
+    <div id="strategiesList">
+      <!-- Strategies will be loaded here dynamically -->
+      <div class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <p class="mt-2 text-muted">Loading strategies...</p>
+      </div>
+    </div>
+
+  </div>
+</div>
