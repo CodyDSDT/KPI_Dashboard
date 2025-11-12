@@ -2,6 +2,19 @@ let { mix } = require('theme-mix')
 
 mix.setPublicPath('.')
 
+// Configure sass options to use dart-sass instead of node-sass
+mix.options({
+  processCssUrls: false,
+  postCss: [],
+  autoprefixer: {
+    options: {
+      browsers: [
+        'last 6 versions',
+      ]
+    }
+  }
+})
+
 mix.webpackConfig({
   module: {
     rules: [{
@@ -10,7 +23,7 @@ mix.webpackConfig({
       use: [
         {
           loader: 'babel-loader',
-          options: Config.babel()
+          options: mix.config.babel ? mix.config.babel() : {}
         }
       ]
     }]
