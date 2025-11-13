@@ -1,0 +1,475 @@
+{
+  "objectives": {
+    "objectives": [
+      {
+        "id": "1",
+        "name": "Conserve and Restore Natural Lands",
+        "description": "Protect, restore, and enhance natural ecosystems across the region",
+        "strategies": [
+          {
+            "id": "1.1",
+            "name": "Land Acquisition and Protection",
+            "description": "Acquire and protect critical natural habitats",
+            "kpis": [
+              {
+                "id": "1.1.1",
+                "name": "Acres of land acquired for conservation",
+                "metricType": "numeric",
+                "target": 5000,
+                "current": 3750,
+                "unit": "acres",
+                "ownerDept": [
+                  "Stewardship",
+                  "Conservation"
+                ],
+                "start": "2024-01-01T00:00:00.000Z",
+                "end": "2025-12-31T00:00:00.000Z",
+                "notes": "Includes fee simple and conservation easements",
+                "lastUpdated": "2025-11-01T10:00:00.000Z"
+              },
+              {
+                "id": "1.1.2",
+                "name": "Number of conservation easements established",
+                "metricType": "numeric",
+                "target": 25,
+                "current": 18,
+                "unit": "easements",
+                "ownerDept": [
+                  "Legal",
+                  "Stewardship"
+                ],
+                "start": "2024-01-01T00:00:00.000Z",
+                "end": "2025-12-31T00:00:00.000Z",
+                "lastUpdated": "2025-10-15T14:30:00.000Z"
+              }
+            ]
+          },
+          {
+            "id": "1.2",
+            "name": "Habitat Restoration",
+            "description": "Restore degraded ecosystems to functional conditions",
+            "kpis": [
+              {
+                "id": "1.2.1",
+                "name": "Acres of wetlands restored",
+                "metricType": "numeric",
+                "target": 1200,
+                "current": 950,
+                "unit": "acres",
+                "ownerDept": [
+                  "Restoration Team"
+                ],
+                "start": "2024-03-01T00:00:00.000Z",
+                "end": "2026-06-30T00:00:00.000Z",
+                "lastUpdated": "2025-11-05T09:15:00.000Z"
+              },
+              {
+                "id": "1.2.2",
+                "name": "Native species plantings completed",
+                "metricType": "numeric",
+                "target": 50000,
+                "current": 42000,
+                "unit": "plants",
+                "ownerDept": [
+                  "Restoration Team",
+                  "Volunteers"
+                ],
+                "start": "2024-01-01T00:00:00.000Z",
+                "end": "2025-12-31T00:00:00.000Z",
+                "lastUpdated": "2025-10-20T16:45:00.000Z"
+              }
+            ]
+          }
+        ],
+        "lastUpdated": "2025-11-05T09:15:00.000Z"
+      },
+      {
+        "id": "2",
+        "name": "Engage and Educate Communities",
+        "description": "Build community awareness and participation in conservation efforts",
+        "strategies": [
+          {
+            "id": "2.1",
+            "name": "Education and Outreach Programs",
+            "description": "Develop and deliver educational programs to diverse audiences",
+            "kpis": [
+              {
+                "id": "2.1.1",
+                "name": "Number of educational programs delivered",
+                "metricType": "numeric",
+                "target": 120,
+                "current": 85,
+                "unit": "programs",
+                "ownerDept": [
+                  "Education",
+                  "Outreach"
+                ],
+                "start": "2024-01-01T00:00:00.000Z",
+                "end": "2025-12-31T00:00:00.000Z",
+                "lastUpdated": "2025-11-01T08:00:00.000Z"
+              },
+              {
+                "id": "2.1.2",
+                "name": "Participants in educational programs",
+                "metricType": "numeric",
+                "target": 5000,
+                "current": 3200,
+                "unit": "people",
+                "ownerDept": [
+                  "Education"
+                ],
+                "start": "2024-01-01T00:00:00.000Z",
+                "end": "2025-12-31T00:00:00.000Z",
+                "lastUpdated": "2025-11-01T08:00:00.000Z"
+              }
+            ]
+          },
+          {
+            "id": "2.2",
+            "name": "Volunteer Engagement",
+            "description": "Recruit, train, and engage volunteers in conservation work",
+            "tactics": [
+              {
+                "id": "2.2.1",
+                "name": "Volunteer Recruitment Campaign",
+                "kpis": [
+                  {
+                    "id": "2.2.1.1",
+                    "name": "New volunteers recruited",
+                    "metricType": "numeric",
+                    "target": 300,
+                    "current": 245,
+                    "unit": "volunteers",
+                    "ownerDept": [
+                      "Volunteer Coordinator"
+                    ],
+                    "start": "2024-01-01T00:00:00.000Z",
+                    "end": "2025-12-31T00:00:00.000Z",
+                    "lastUpdated": "2025-10-28T12:00:00.000Z"
+                  }
+                ]
+              },
+              {
+                "id": "2.2.2",
+                "name": "Volunteer Training Programs",
+                "kpis": [
+                  {
+                    "id": "2.2.2.1",
+                    "name": "Volunteer training sessions conducted",
+                    "metricType": "numeric",
+                    "target": 24,
+                    "current": 18,
+                    "unit": "sessions",
+                    "ownerDept": [
+                      "Volunteer Coordinator",
+                      "Education"
+                    ],
+                    "start": "2024-01-01T00:00:00.000Z",
+                    "end": "2025-12-31T00:00:00.000Z",
+                    "lastUpdated": "2025-10-15T14:00:00.000Z"
+                  },
+                  {
+                    "id": "2.2.2.2",
+                    "name": "Volunteer hours contributed",
+                    "metricType": "numeric",
+                    "target": 15000,
+                    "current": 11250,
+                    "unit": "hours",
+                    "ownerDept": [
+                      "Volunteer Coordinator"
+                    ],
+                    "start": "2024-01-01T00:00:00.000Z",
+                    "end": "2025-12-31T00:00:00.000Z",
+                    "lastUpdated": "2025-10-31T17:00:00.000Z"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "lastUpdated": "2025-11-01T08:00:00.000Z"
+      },
+      {
+        "id": "3",
+        "name": "Advance Climate Resilience",
+        "description": "Implement strategies to enhance ecosystem and community resilience to climate change",
+        "strategies": [
+          {
+            "id": "3.1",
+            "name": "Climate Adaptation Planning",
+            "description": "Develop and implement climate adaptation strategies",
+            "kpis": [
+              {
+                "id": "3.1.1",
+                "name": "Climate adaptation plan completed",
+                "metricType": "milestone",
+                "target": 1,
+                "current": 0,
+                "ownerDept": [
+                  "Climate Team",
+                  "Science"
+                ],
+                "start": "2024-06-01T00:00:00.000Z",
+                "end": "2025-06-30T00:00:00.000Z",
+                "notes": "Comprehensive regional climate adaptation strategy",
+                "lastUpdated": "2025-09-15T10:00:00.000Z"
+              },
+              {
+                "id": "3.1.2",
+                "name": "Stakeholder engagement sessions",
+                "metricType": "numeric",
+                "target": 15,
+                "current": 9,
+                "unit": "sessions",
+                "ownerDept": [
+                  "Climate Team",
+                  "Outreach"
+                ],
+                "start": "2024-06-01T00:00:00.000Z",
+                "end": "2025-06-30T00:00:00.000Z",
+                "lastUpdated": "2025-10-10T11:30:00.000Z"
+              }
+            ]
+          },
+          {
+            "id": "3.2",
+            "name": "Carbon Sequestration Projects",
+            "description": "Implement projects to increase carbon storage in natural systems",
+            "kpis": [
+              {
+                "id": "3.2.1",
+                "name": "Estimated tons of CO2 sequestered annually",
+                "metricType": "numeric",
+                "target": 10000,
+                "current": 4500,
+                "unit": "tons CO2",
+                "ownerDept": [
+                  "Climate Team",
+                  "Science"
+                ],
+                "start": "2024-01-01T00:00:00.000Z",
+                "end": "2026-12-31T00:00:00.000Z",
+                "notes": "Based on forest and wetland restoration projects",
+                "lastUpdated": "2025-10-25T13:45:00.000Z"
+              }
+            ]
+          }
+        ],
+        "lastUpdated": "2025-10-25T13:45:00.000Z"
+      }
+    ],
+    "lastSync": "2025-11-12T18:00:00.000Z",
+    "version": "1.0"
+  },
+  "kpis": {
+    "kpis": [
+      {
+        "id": "1.1.1",
+        "name": "Acres of land acquired for conservation",
+        "metricType": "numeric",
+        "target": 5000,
+        "current": 3750,
+        "unit": "acres",
+        "ownerDept": [
+          "Stewardship",
+          "Conservation"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "1",
+        "strategyId": "1.1",
+        "notes": "Includes fee simple and conservation easements",
+        "lastUpdated": "2025-11-01T10:00:00.000Z"
+      },
+      {
+        "id": "1.1.2",
+        "name": "Number of conservation easements established",
+        "metricType": "numeric",
+        "target": 25,
+        "current": 18,
+        "unit": "easements",
+        "ownerDept": [
+          "Legal",
+          "Stewardship"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "1",
+        "strategyId": "1.1",
+        "lastUpdated": "2025-10-15T14:30:00.000Z"
+      },
+      {
+        "id": "1.2.1",
+        "name": "Acres of wetlands restored",
+        "metricType": "numeric",
+        "target": 1200,
+        "current": 950,
+        "unit": "acres",
+        "ownerDept": [
+          "Restoration Team"
+        ],
+        "start": "2024-03-01T00:00:00.000Z",
+        "end": "2026-06-30T00:00:00.000Z",
+        "objectiveId": "1",
+        "strategyId": "1.2",
+        "lastUpdated": "2025-11-05T09:15:00.000Z"
+      },
+      {
+        "id": "1.2.2",
+        "name": "Native species plantings completed",
+        "metricType": "numeric",
+        "target": 50000,
+        "current": 42000,
+        "unit": "plants",
+        "ownerDept": [
+          "Restoration Team",
+          "Volunteers"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "1",
+        "strategyId": "1.2",
+        "lastUpdated": "2025-10-20T16:45:00.000Z"
+      },
+      {
+        "id": "2.1.1",
+        "name": "Number of educational programs delivered",
+        "metricType": "numeric",
+        "target": 120,
+        "current": 85,
+        "unit": "programs",
+        "ownerDept": [
+          "Education",
+          "Outreach"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "2",
+        "strategyId": "2.1",
+        "lastUpdated": "2025-11-01T08:00:00.000Z"
+      },
+      {
+        "id": "2.1.2",
+        "name": "Participants in educational programs",
+        "metricType": "numeric",
+        "target": 5000,
+        "current": 3200,
+        "unit": "people",
+        "ownerDept": [
+          "Education"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "2",
+        "strategyId": "2.1",
+        "lastUpdated": "2025-11-01T08:00:00.000Z"
+      },
+      {
+        "id": "2.2.1.1",
+        "name": "New volunteers recruited",
+        "metricType": "numeric",
+        "target": 300,
+        "current": 245,
+        "unit": "volunteers",
+        "ownerDept": [
+          "Volunteer Coordinator"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "2",
+        "strategyId": "2.2",
+        "tacticId": "2.2.1",
+        "lastUpdated": "2025-10-28T12:00:00.000Z"
+      },
+      {
+        "id": "2.2.2.1",
+        "name": "Volunteer training sessions conducted",
+        "metricType": "numeric",
+        "target": 24,
+        "current": 18,
+        "unit": "sessions",
+        "ownerDept": [
+          "Volunteer Coordinator",
+          "Education"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "2",
+        "strategyId": "2.2",
+        "tacticId": "2.2.2",
+        "lastUpdated": "2025-10-15T14:00:00.000Z"
+      },
+      {
+        "id": "2.2.2.2",
+        "name": "Volunteer hours contributed",
+        "metricType": "numeric",
+        "target": 15000,
+        "current": 11250,
+        "unit": "hours",
+        "ownerDept": [
+          "Volunteer Coordinator"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2025-12-31T00:00:00.000Z",
+        "objectiveId": "2",
+        "strategyId": "2.2",
+        "tacticId": "2.2.2",
+        "lastUpdated": "2025-10-31T17:00:00.000Z"
+      },
+      {
+        "id": "3.1.1",
+        "name": "Climate adaptation plan completed",
+        "metricType": "milestone",
+        "target": 1,
+        "current": 0,
+        "ownerDept": [
+          "Climate Team",
+          "Science"
+        ],
+        "start": "2024-06-01T00:00:00.000Z",
+        "end": "2025-06-30T00:00:00.000Z",
+        "objectiveId": "3",
+        "strategyId": "3.1",
+        "notes": "Comprehensive regional climate adaptation strategy",
+        "lastUpdated": "2025-09-15T10:00:00.000Z"
+      },
+      {
+        "id": "3.1.2",
+        "name": "Stakeholder engagement sessions",
+        "metricType": "numeric",
+        "target": 15,
+        "current": 9,
+        "unit": "sessions",
+        "ownerDept": [
+          "Climate Team",
+          "Outreach"
+        ],
+        "start": "2024-06-01T00:00:00.000Z",
+        "end": "2025-06-30T00:00:00.000Z",
+        "objectiveId": "3",
+        "strategyId": "3.1",
+        "lastUpdated": "2025-10-10T11:30:00.000Z"
+      },
+      {
+        "id": "3.2.1",
+        "name": "Estimated tons of CO2 sequestered annually",
+        "metricType": "numeric",
+        "target": 10000,
+        "current": 4500,
+        "unit": "tons CO2",
+        "ownerDept": [
+          "Climate Team",
+          "Science"
+        ],
+        "start": "2024-01-01T00:00:00.000Z",
+        "end": "2026-12-31T00:00:00.000Z",
+        "objectiveId": "3",
+        "strategyId": "3.2",
+        "notes": "Based on forest and wetland restoration projects",
+        "lastUpdated": "2025-10-25T13:45:00.000Z"
+      }
+    ],
+    "lastSync": "2025-11-12T18:00:00.000Z",
+    "version": "1.0"
+  }
+}

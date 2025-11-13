@@ -1,0 +1,78 @@
+<div class="container page__container">
+  <div class="page-section">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h1 class="h2">INLC Strategic Objectives</h1>
+        <p class="text-muted">Track progress across all strategic initiatives</p>
+      </div>
+      <div>
+        <span class="badge badge-light" id="lastSyncBadge">
+          <i class="fa fa-clock-o mr-1"></i>
+          Last synced: <span id="lastSync">-</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row mb-4">
+      <div class="col-lg-3 col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <h3 class="mb-1" id="totalObjectives">0</h3>
+            <p class="text-muted mb-0">Total Objectives</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <h3 class="mb-1" id="totalStrategies">0</h3>
+            <p class="text-muted mb-0">Total Strategies</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <h3 class="mb-1" id="totalKPIs">0</h3>
+            <p class="text-muted mb-0">Total KPIs</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <h3 class="mb-1" id="overallProgress">0%</h3>
+            <p class="text-muted mb-0">Overall Progress</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Objectives List -->
+    <div class="card">
+      <div class="card-header">
+        <div class="d-flex align-items-center">
+          <div class="flex">
+            <h4 class="card-title mb-0">Strategic Objectives</h4>
+          </div>
+          <div class="ml-auto">
+            <input type="text" class="form-control form-control-sm" id="searchInput" placeholder="Search objectives...">
+          </div>
+        </div>
+      </div>
+      <div class="list-group list-group-flush" id="objectivesList">
+        <!-- Objectives will be loaded here dynamically -->
+        <div class="list-group-item text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <p class="mt-2 text-muted">Loading objectives...</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

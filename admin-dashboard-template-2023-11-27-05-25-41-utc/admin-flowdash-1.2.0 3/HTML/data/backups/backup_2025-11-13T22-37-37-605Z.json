@@ -1,0 +1,900 @@
+{
+  "objectives": {
+    "objectives": [
+      {
+        "id": "OBJ-001",
+        "name": "Develop and execute a robust portfolio of well-resourced conservation projects to achieve key milestones towards our 2030 goal",
+        "description": "Focus on protecting 15,000 acres through priority area projects in WA and ID. Maintain full project pipeline striving to move at least 50 projects through Evaluation and Development by 2030.",
+        "strategies": [
+          {
+            "id": "STR-001",
+            "name": "Define INLC's service area and complete 50+ priority area projects",
+            "description": "Implement Priority Area plan, conduct annual outreach with 50 landowners and 20 conservation professionals, define service area with partner land trusts, develop stable of inactive projects ready for funding.",
+            "tactics": [
+              {
+                "id": "TAC-001",
+                "name": "Resource delegation for Priority Area plan implementation",
+                "description": "Determine goals for outreach and projects within each priority area. Delegate staff hours. Develop and maintain 10 projects per conserve staff member.",
+                "kpis": [
+                  {
+                    "id": "KPI-001",
+                    "name": "Acres conserved (annual)",
+                    "metricType": "numeric",
+                    "target": 3000,
+                    "current": 0,
+                    "unit": "acres",
+                    "ownerDept": [
+                      "Conservation"
+                    ],
+                    "tacticId": "TAC-001",
+                    "notes": "Annual acres permanently conserved toward 15k goal by 2030",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-001",
+                    "objectiveId": "OBJ-001"
+                  },
+                  {
+                    "id": "KPI-002",
+                    "name": "# of priority conservation projects completed or in pipeline",
+                    "metricType": "numeric",
+                    "target": 50,
+                    "current": 12,
+                    "unit": "projects",
+                    "ownerDept": [
+                      "Conservation"
+                    ],
+                    "tacticId": "TAC-001",
+                    "notes": "Cumulative count of priority projects toward 50+ by 2030",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-001",
+                    "objectiveId": "OBJ-001"
+                  },
+                  {
+                    "id": "KPI-004",
+                    "name": "% of conservation easements monitored",
+                    "metricType": "numeric",
+                    "target": 100,
+                    "current": 85,
+                    "unit": "%",
+                    "ownerDept": [
+                      "Stewardship"
+                    ],
+                    "tacticId": "TAC-001",
+                    "notes": "Annual monitoring of all conservation easements to ensure 100% compliance",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-001",
+                    "objectiveId": "OBJ-001"
+                  },
+                  {
+                    "id": "KPI-005",
+                    "name": "# of restoration projects funded/underway",
+                    "metricType": "numeric",
+                    "target": 10,
+                    "current": 3,
+                    "unit": "projects",
+                    "ownerDept": [
+                      "Stewardship"
+                    ],
+                    "tacticId": "TAC-001",
+                    "notes": "Number of funded habitat restoration projects on conserved lands",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-001",
+                    "objectiveId": "OBJ-001"
+                  },
+                  {
+                    "id": "KPI-006",
+                    "name": "Landowner stewardship gatherings hosted",
+                    "metricType": "numeric",
+                    "target": 2,
+                    "current": 1,
+                    "unit": "events",
+                    "ownerDept": [
+                      "Stewardship"
+                    ],
+                    "tacticId": "TAC-001",
+                    "notes": "Annual gatherings to engage and support conservation landowners",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-001",
+                    "objectiveId": "OBJ-001"
+                  }
+                ]
+              },
+              {
+                "id": "TAC-002",
+                "name": "Complete annual outreach with landowners and professionals",
+                "description": "Conduct outreach with 50 landowners and 20 conservation professionals throughout INLC service area. Document conservation barriers.",
+                "kpis": [
+                  {
+                    "id": "KPI-003",
+                    "name": "# of landowners and professionals engaged",
+                    "metricType": "numeric",
+                    "target": 70,
+                    "current": 15,
+                    "unit": "contacts",
+                    "ownerDept": [
+                      "Conservation"
+                    ],
+                    "tacticId": "TAC-002",
+                    "notes": "Landowners and advisors engaged through outreach events and site visits",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-001",
+                    "objectiveId": "OBJ-001"
+                  }
+                ]
+              },
+              {
+                "id": "TAC-003",
+                "name": "Define INLC service area with partner land trusts",
+                "description": "Work with Palouse Land Trust to delineate work areas in Shoshone County. Continue communication with Kaniksu Land Trust for Bonner County.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-004",
+                "name": "Develop stable of inactive projects ready for funding",
+                "description": "Build pipeline of projects that are fully prepared but awaiting funding sources.",
+                "kpis": []
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-002",
+            "name": "Define Community Conservation objectives and criteria",
+            "description": "Define Community Conservation Project criteria including willing landowners, feasibility, project duration. Develop project selection and evaluation tool. Clarify policy for Conservation Opportunity and Special Projects fund.",
+            "tactics": [
+              {
+                "id": "TAC-005",
+                "name": "Define a Community Conservation Project",
+                "description": "Define criteria: What is a willing landowner? How does feasibility affect selection? How long should a project take? Bring proposal through LPC.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-006",
+                "name": "Develop project selection and evaluation tool",
+                "description": "Create evaluation tool for assessing Community Conservation Projects.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-007",
+                "name": "Clarify policy for Conservation Opportunity and Special Projects fund",
+                "description": "Conserve team makes proposals for policy changes. Reviewed by directors, approved by board.",
+                "kpis": []
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-003",
+            "name": "Implement strategic process for agency relationship building",
+            "description": "Track and maintain relationships with regional elected officials. Plan for and launch Advocacy Committee to secure conservation funding and planning support.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-004",
+            "name": "Develop Conservation Buyers cohort and mini-campaign strategy",
+            "description": "Plan and launch Conservation Buyers cohort cultivation strategy. Plan for ongoing project-specific mini-campaigns to fund completion of specific projects.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-005",
+            "name": "Host landowner gathering and expand landowner engagement",
+            "description": "Host inaugural landowner gathering to share resources and build community. Build processes for evaluating and funding restoration projects.",
+            "tactics": [],
+            "kpis": []
+          }
+        ],
+        "lastUpdated": "2025-11-13T21:52:01.797Z"
+      },
+      {
+        "id": "OBJ-002",
+        "name": "Build a broader community of conservation allies and champions by (re)connecting people to the land and expanding partnerships, education, and engagement opportunities",
+        "description": "Expand community engagement through Glen Tana, develop Idaho presence, build tribal partnerships, launch Future Leaders program, and hire Engagement Director.",
+        "strategies": [
+          {
+            "id": "STR-006",
+            "name": "Launch and expand Leveraging Glen Tana community engagement strategy",
+            "description": "Phase 1: House demolition and site prep. Expand community engagement programming. Plan for Phase 2 site build-out and capital campaign.",
+            "tactics": [
+              {
+                "id": "TAC-013",
+                "name": "Launch Phase 1 of Leveraging Glen Tana: House demolition and site prep",
+                "description": "Complete house demolition and prepare site for community engagement activities.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-014",
+                "name": "Continue and expand community engagement programming at Glen Tana",
+                "description": "Develop and implement community engagement programming offerings at Glen Tana site.",
+                "kpis": [
+                  {
+                    "id": "KPI-007",
+                    "name": "Volunteer & community participants engaged",
+                    "metricType": "numeric",
+                    "target": 500,
+                    "current": 250,
+                    "unit": "people",
+                    "ownerDept": [
+                      "Engagement"
+                    ],
+                    "tacticId": "TAC-014",
+                    "notes": "Annual count of volunteers, students, and community participants engaged",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-006",
+                    "objectiveId": "OBJ-002"
+                  },
+                  {
+                    "id": "KPI-008",
+                    "name": "Volunteer stewardship events hosted",
+                    "metricType": "numeric",
+                    "target": 20,
+                    "current": 8,
+                    "unit": "events",
+                    "ownerDept": [
+                      "Engagement"
+                    ],
+                    "tacticId": "TAC-014",
+                    "notes": "Number of volunteer events or workshops hosted per year",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-006",
+                    "objectiveId": "OBJ-002"
+                  }
+                ]
+              },
+              {
+                "id": "TAC-015",
+                "name": "Develop plans for Phase 2: Site build-out",
+                "description": "Create comprehensive plans for Glen Tana Phase 2 facility build-out.",
+                "kpis": []
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-007",
+            "name": "Expand Idaho engagement and donor development",
+            "description": "Fill project pipeline with compelling ID projects. Plan and implement ID community engagement activities. Develop 1 new high-visibility Community Conservation site in ID.",
+            "tactics": [
+              {
+                "id": "TAC-016",
+                "name": "Fill project pipeline with compelling ID projects",
+                "description": "Continue filling pipeline with compelling Idaho projects that will inspire more ID support.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-017",
+                "name": "Plan for ID community engagement activities",
+                "description": "Plan and implement ID community engagement activities. Use ID projects to recruit, retain, develop ID donors.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-018",
+                "name": "Develop 1 new high-visibility Community Conservation site in ID",
+                "description": "Identify, develop, and launch one high-visibility Idaho community conservation site.",
+                "kpis": [
+                  {
+                    "id": "KPI-009",
+                    "name": "New community conservation site in Idaho",
+                    "metricType": "numeric",
+                    "target": 1,
+                    "current": 0,
+                    "unit": "site",
+                    "ownerDept": [
+                      "Conservation"
+                    ],
+                    "tacticId": "TAC-018",
+                    "notes": "Establishment of a high-visibility Idaho site for community conservation",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-007",
+                    "objectiveId": "OBJ-002"
+                  }
+                ]
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-008",
+            "name": "Build intentional relationships with regional Tribes",
+            "description": "Plan for intentional relationship building with regional Tribes. Partner in hosting regional Tribal/Land Trust gathering. Create plan for inviting tribal representation into INLC board leadership.",
+            "tactics": [
+              {
+                "id": "TAC-019",
+                "name": "Plan for intentional Tribal relationship building",
+                "description": "Plan for intentional relationship building with regional Tribes. Continue nurturing existing relationships.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-020",
+                "name": "Partner in hosting regional Tribal/Land Trust gathering",
+                "description": "Partner with Tribes to host regional Tribal/Land Trust gathering.",
+                "kpis": [
+                  {
+                    "id": "KPI-010",
+                    "name": "Tribal partnership engagement events",
+                    "metricType": "numeric",
+                    "target": 1,
+                    "current": 0,
+                    "unit": "events",
+                    "ownerDept": [
+                      "Executive"
+                    ],
+                    "tacticId": "TAC-020",
+                    "notes": "Annual or biannual gatherings with Tribal partners to support shared conservation goals",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-008",
+                    "objectiveId": "OBJ-002"
+                  }
+                ]
+              },
+              {
+                "id": "TAC-021",
+                "name": "Create plan for inviting Tribal representation into board",
+                "description": "Create plan for inviting tribal representation into INLC board leadership positions or advisory capacity.",
+                "kpis": [
+                  {
+                    "id": "KPI-011",
+                    "name": "Tribal representation in governance",
+                    "metricType": "numeric",
+                    "target": 1,
+                    "current": 0,
+                    "unit": "members",
+                    "ownerDept": [
+                      "Board"
+                    ],
+                    "tacticId": "TAC-021",
+                    "notes": "Inclusion of Tribal members in board/advisory roles",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-008",
+                    "objectiveId": "OBJ-002"
+                  }
+                ]
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-009",
+            "name": "Launch Future Leaders internship program",
+            "description": "Plan Future Leaders internship program structure and budget to develop next generation of conservation leaders. Launch program in 2026.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-010",
+            "name": "Hire Engagement Director and expand engagement programming",
+            "description": "Budget and plan for Engagement Director position. Hire director and expand programming, branding, marketing. Launch expanded marketing/branding campaign.",
+            "tactics": [
+              {
+                "id": "TAC-022",
+                "name": "Budget and plan for Engagement Director position",
+                "description": "Develop job description, budget, and hiring plan for Engagement Director and program.",
+                "kpis": [
+                  {
+                    "id": "KPI-012",
+                    "name": "Future Conservation Leaders internships",
+                    "metricType": "numeric",
+                    "target": 5,
+                    "current": 0,
+                    "unit": "interns",
+                    "ownerDept": [
+                      "Engagement"
+                    ],
+                    "tacticId": "TAC-022",
+                    "notes": "Internship program for underrepresented groups in conservation",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-010",
+                    "objectiveId": "OBJ-002"
+                  }
+                ]
+              },
+              {
+                "id": "TAC-023",
+                "name": "Hire Engagement Director",
+                "description": "Execute recruitment process and hire Engagement Director.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-024",
+                "name": "Plan and launch expanded marketing/branding campaign",
+                "description": "Develop and implement expanded marketing and branding campaign to increase visibility and membership.",
+                "kpis": []
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-011",
+            "name": "Expand volunteer stewardship program",
+            "description": "Continue existing volunteer engagement. Seek corporate partners to fund expanded volunteer stewardship program on conserved lands. Launch expanded program with Engagement Director.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-012",
+            "name": "Occupy office space/facilities by 2027",
+            "description": "Assess current and future facilities needs via staff survey. Develop criteria for desired facilities. Create and implement timeline and funding plan for new/improved office spaces.",
+            "tactics": [
+              {
+                "id": "TAC-008",
+                "name": "Assess current and future facilities needs - survey staff",
+                "description": "Survey staff for what they want to see. Develop criteria for desired future facilities including office space, education space, plant nursery, or other spaces.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-009",
+                "name": "Create and implement timeline and funding plan for new office space",
+                "description": "Create and implement timeline and funding plan for acquiring new office space(s) or improving existing spaces.",
+                "kpis": [
+                  {
+                    "id": "KPI-017",
+                    "name": "Office/facilities expansion",
+                    "metricType": "numeric",
+                    "target": 1,
+                    "current": 0,
+                    "unit": "completion",
+                    "ownerDept": [
+                      "Operations"
+                    ],
+                    "tacticId": "TAC-009",
+                    "notes": "Secure and occupy expanded office facilities by 2027",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-012",
+                    "objectiveId": "OBJ-002"
+                  }
+                ]
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-013",
+            "name": "Conduct org-wide tech systems audit and develop multi-year plan by 2026",
+            "description": "Conduct systems audit by end of 2025 prioritizing cyber security. Hire managed IT consultant. Develop 5-year plan for hardware/software acquisition, maintenance, and replacement.",
+            "tactics": [
+              {
+                "id": "TAC-010",
+                "name": "Conduct systems audit by end of 2025",
+                "description": "Conduct org-wide tech systems audit. Develop implementation plan and budget that prioritizes cyber security.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-011",
+                "name": "Hire consultant for full-service managed IT",
+                "description": "Hire consultant to provide full-service managed IT. Designate in-office tech contact to work with consultant. REACH OUT TO OTHER NONPROFITS about what they're doing.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-012",
+                "name": "Develop 5-year plan for hardware and software",
+                "description": "With assistance from consultant, develop plan and budget for acquiring, maintaining, and/or replacing hardware and software for next 5 years.",
+                "kpis": []
+              }
+            ],
+            "kpis": []
+          }
+        ],
+        "lastUpdated": "2025-11-13T21:52:01.797Z"
+      },
+      {
+        "id": "OBJ-003",
+        "name": "Diversify and grow the human and financial resources of our organization to achieve long term conservation impact",
+        "description": "Create multi-year staff and board recruitment plans, implement facilities and technology improvements, expand member and corporate partner recruitment, develop donor stewardship portfolios, and build resilient funding model.",
+        "strategies": [
+          {
+            "id": "STR-014",
+            "name": "Create multi-year staff and board recruitment and development plans",
+            "description": "Create and implement staff and board recruitment plans. Intentionally seek diverse backgrounds for open positions. Launch recruitment and development plans in 2026.",
+            "tactics": [
+              {
+                "id": "TAC-025",
+                "name": "Create multi-year staff recruitment and development plan",
+                "description": "Develop comprehensive multi-year plan for staff recruitment and professional development.",
+                "kpis": [
+                  {
+                    "id": "KPI-013",
+                    "name": "Total active members/donors",
+                    "metricType": "numeric",
+                    "target": 1500,
+                    "current": 1200,
+                    "unit": "donors",
+                    "ownerDept": [
+                      "Development"
+                    ],
+                    "tacticId": "TAC-025",
+                    "notes": "Annual number of individual donors contributing to INLC",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-014",
+                    "objectiveId": "OBJ-003"
+                  },
+                  {
+                    "id": "KPI-014",
+                    "name": "Major donors engaged",
+                    "metricType": "numeric",
+                    "target": 50,
+                    "current": 35,
+                    "unit": "donors",
+                    "ownerDept": [
+                      "Development"
+                    ],
+                    "tacticId": "TAC-025",
+                    "notes": "Number of major donor prospects actively cultivated",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-014",
+                    "objectiveId": "OBJ-003"
+                  },
+                  {
+                    "id": "KPI-015",
+                    "name": "Private philanthropy % of revenue",
+                    "metricType": "numeric",
+                    "target": 60,
+                    "current": 55,
+                    "unit": "%",
+                    "ownerDept": [
+                      "Development"
+                    ],
+                    "tacticId": "TAC-025",
+                    "notes": "Proportion of annual revenue from private donations, grants, and bequests",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-014",
+                    "objectiveId": "OBJ-003"
+                  },
+                  {
+                    "id": "KPI-016",
+                    "name": "Annual operating revenue",
+                    "metricType": "numeric",
+                    "target": 3000000,
+                    "current": 2500000,
+                    "unit": "$",
+                    "ownerDept": [
+                      "Finance"
+                    ],
+                    "tacticId": "TAC-025",
+                    "notes": "Total annual revenue supporting operations and growth",
+                    "lastUpdated": "1970-01-01T00:00:45.947Z",
+                    "strategyId": "STR-014",
+                    "objectiveId": "OBJ-003"
+                  }
+                ]
+              },
+              {
+                "id": "TAC-026",
+                "name": "Create multi-year board recruitment and development plan",
+                "kpis": []
+              },
+              {
+                "id": "TAC-027",
+                "name": "Launch staff and board recruitment and development plans",
+                "description": "Begin implementation of recruitment and development strategies for both staff and board.",
+                "kpis": []
+              },
+              {
+                "id": "TAC-028",
+                "name": "Intentionally seek diverse applicants for open positions",
+                "description": "Actively recruit applicants of diverse backgrounds and experience for all open staff positions.",
+                "kpis": []
+              }
+            ],
+            "kpis": []
+          },
+          {
+            "id": "STR-015",
+            "name": "Use strategic plan to evaluate organizational effectiveness",
+            "description": "Implement strategic plan to evaluate, redirect, celebrate staff and board effectiveness. Learn from and update plan/metrics to maintain momentum and relevance.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-016",
+            "name": "Sustain and expand member and corporate partner recruitment",
+            "description": "Sustain existing member and corporate partner recruitment. Plan and budget for elevated programs. Implement expanded recruitment plans starting 2027.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-017",
+            "name": "Implement and expand donor stewardship portfolios",
+            "description": "Implement expanded staff donor stewardship portfolios. Plan and implement board donor stewardship portfolios. Evaluate and adapt continuously.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-018",
+            "name": "Develop culture of philanthropy through training",
+            "description": "Plan ongoing fundraising trainings and philanthropy team-building for staff and board. Implement training plan. Plan and implement Philanthropy Team recruitment.",
+            "tactics": [],
+            "kpis": []
+          },
+          {
+            "id": "STR-019",
+            "name": "Research and implement resilient funding model",
+            "description": "Research funding models of similar-sized nonprofits. Plan for resilient, balanced revenue mix. Implement funding diversification plan.",
+            "tactics": [],
+            "kpis": []
+          }
+        ],
+        "lastUpdated": "2025-11-13T21:52:01.797Z"
+      }
+    ],
+    "lastSync": "2025-11-13T21:52:01.800Z",
+    "version": "1.0"
+  },
+  "kpis": {
+    "kpis": [
+      {
+        "id": "KPI-001",
+        "name": "Acres conserved (annual)",
+        "metricType": "numeric",
+        "target": 3000,
+        "current": 0,
+        "unit": "acres",
+        "ownerDept": [
+          "Conservation"
+        ],
+        "tacticId": "TAC-001",
+        "notes": "Annual acres permanently conserved toward 15k goal by 2030",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-001",
+        "objectiveId": "OBJ-001"
+      },
+      {
+        "id": "KPI-002",
+        "name": "# of priority conservation projects completed or in pipeline",
+        "metricType": "numeric",
+        "target": 50,
+        "current": 12,
+        "unit": "projects",
+        "ownerDept": [
+          "Conservation"
+        ],
+        "tacticId": "TAC-001",
+        "notes": "Cumulative count of priority projects toward 50+ by 2030",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-001",
+        "objectiveId": "OBJ-001"
+      },
+      {
+        "id": "KPI-003",
+        "name": "# of landowners and professionals engaged",
+        "metricType": "numeric",
+        "target": 70,
+        "current": 15,
+        "unit": "contacts",
+        "ownerDept": [
+          "Conservation"
+        ],
+        "tacticId": "TAC-002",
+        "notes": "Landowners and advisors engaged through outreach events and site visits",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-001",
+        "objectiveId": "OBJ-001"
+      },
+      {
+        "id": "KPI-004",
+        "name": "% of conservation easements monitored",
+        "metricType": "numeric",
+        "target": 100,
+        "current": 85,
+        "unit": "%",
+        "ownerDept": [
+          "Stewardship"
+        ],
+        "tacticId": "TAC-001",
+        "notes": "Annual monitoring of all conservation easements to ensure 100% compliance",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-001",
+        "objectiveId": "OBJ-001"
+      },
+      {
+        "id": "KPI-005",
+        "name": "# of restoration projects funded/underway",
+        "metricType": "numeric",
+        "target": 10,
+        "current": 3,
+        "unit": "projects",
+        "ownerDept": [
+          "Stewardship"
+        ],
+        "tacticId": "TAC-001",
+        "notes": "Number of funded habitat restoration projects on conserved lands",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-001",
+        "objectiveId": "OBJ-001"
+      },
+      {
+        "id": "KPI-006",
+        "name": "Landowner stewardship gatherings hosted",
+        "metricType": "numeric",
+        "target": 2,
+        "current": 1,
+        "unit": "events",
+        "ownerDept": [
+          "Stewardship"
+        ],
+        "tacticId": "TAC-001",
+        "notes": "Annual gatherings to engage and support conservation landowners",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-001",
+        "objectiveId": "OBJ-001"
+      },
+      {
+        "id": "KPI-007",
+        "name": "Volunteer & community participants engaged",
+        "metricType": "numeric",
+        "target": 500,
+        "current": 250,
+        "unit": "people",
+        "ownerDept": [
+          "Engagement"
+        ],
+        "tacticId": "TAC-014",
+        "notes": "Annual count of volunteers, students, and community participants engaged",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-006",
+        "objectiveId": "OBJ-002"
+      },
+      {
+        "id": "KPI-008",
+        "name": "Volunteer stewardship events hosted",
+        "metricType": "numeric",
+        "target": 20,
+        "current": 8,
+        "unit": "events",
+        "ownerDept": [
+          "Engagement"
+        ],
+        "tacticId": "TAC-014",
+        "notes": "Number of volunteer events or workshops hosted per year",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-006",
+        "objectiveId": "OBJ-002"
+      },
+      {
+        "id": "KPI-009",
+        "name": "New community conservation site in Idaho",
+        "metricType": "numeric",
+        "target": 1,
+        "current": 0,
+        "unit": "site",
+        "ownerDept": [
+          "Conservation"
+        ],
+        "tacticId": "TAC-018",
+        "notes": "Establishment of a high-visibility Idaho site for community conservation",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-007",
+        "objectiveId": "OBJ-002"
+      },
+      {
+        "id": "KPI-010",
+        "name": "Tribal partnership engagement events",
+        "metricType": "numeric",
+        "target": 1,
+        "current": 0,
+        "unit": "events",
+        "ownerDept": [
+          "Executive"
+        ],
+        "tacticId": "TAC-020",
+        "notes": "Annual or biannual gatherings with Tribal partners to support shared conservation goals",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-008",
+        "objectiveId": "OBJ-002"
+      },
+      {
+        "id": "KPI-011",
+        "name": "Tribal representation in governance",
+        "metricType": "numeric",
+        "target": 1,
+        "current": 0,
+        "unit": "members",
+        "ownerDept": [
+          "Board"
+        ],
+        "tacticId": "TAC-021",
+        "notes": "Inclusion of Tribal members in board/advisory roles",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-008",
+        "objectiveId": "OBJ-002"
+      },
+      {
+        "id": "KPI-012",
+        "name": "Future Conservation Leaders internships",
+        "metricType": "numeric",
+        "target": 5,
+        "current": 0,
+        "unit": "interns",
+        "ownerDept": [
+          "Engagement"
+        ],
+        "tacticId": "TAC-022",
+        "notes": "Internship program for underrepresented groups in conservation",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-010",
+        "objectiveId": "OBJ-002"
+      },
+      {
+        "id": "KPI-013",
+        "name": "Total active members/donors",
+        "metricType": "numeric",
+        "target": 1500,
+        "current": 1200,
+        "unit": "donors",
+        "ownerDept": [
+          "Development"
+        ],
+        "tacticId": "TAC-025",
+        "notes": "Annual number of individual donors contributing to INLC",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-014",
+        "objectiveId": "OBJ-003"
+      },
+      {
+        "id": "KPI-014",
+        "name": "Major donors engaged",
+        "metricType": "numeric",
+        "target": 50,
+        "current": 35,
+        "unit": "donors",
+        "ownerDept": [
+          "Development"
+        ],
+        "tacticId": "TAC-025",
+        "notes": "Number of major donor prospects actively cultivated",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-014",
+        "objectiveId": "OBJ-003"
+      },
+      {
+        "id": "KPI-015",
+        "name": "Private philanthropy % of revenue",
+        "metricType": "numeric",
+        "target": 60,
+        "current": 55,
+        "unit": "%",
+        "ownerDept": [
+          "Development"
+        ],
+        "tacticId": "TAC-025",
+        "notes": "Proportion of annual revenue from private donations, grants, and bequests",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-014",
+        "objectiveId": "OBJ-003"
+      },
+      {
+        "id": "KPI-016",
+        "name": "Annual operating revenue",
+        "metricType": "numeric",
+        "target": 3000000,
+        "current": 2500000,
+        "unit": "$",
+        "ownerDept": [
+          "Finance"
+        ],
+        "tacticId": "TAC-025",
+        "notes": "Total annual revenue supporting operations and growth",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-014",
+        "objectiveId": "OBJ-003"
+      },
+      {
+        "id": "KPI-017",
+        "name": "Office/facilities expansion",
+        "metricType": "numeric",
+        "target": 1,
+        "current": 0,
+        "unit": "completion",
+        "ownerDept": [
+          "Operations"
+        ],
+        "tacticId": "TAC-009",
+        "notes": "Secure and occupy expanded office facilities by 2027",
+        "lastUpdated": "1970-01-01T00:00:45.947Z",
+        "strategyId": "STR-012",
+        "objectiveId": "OBJ-002"
+      }
+    ],
+    "lastSync": "2025-11-13T21:52:01.800Z",
+    "version": "1.0"
+  }
+}

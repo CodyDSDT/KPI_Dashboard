@@ -1,0 +1,278 @@
+{
+  "kpis": [
+    {
+      "id": "KPI-001",
+      "name": "Acres conserved (annual)",
+      "metricType": "numeric",
+      "target": 3000,
+      "current": 0,
+      "unit": "acres",
+      "ownerDept": [
+        "Conservation"
+      ],
+      "tacticId": "TAC-001",
+      "notes": "Annual acres permanently conserved toward 15k goal by 2030",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-001",
+      "objectiveId": "OBJ-001"
+    },
+    {
+      "id": "KPI-002",
+      "name": "# of priority conservation projects completed or in pipeline",
+      "metricType": "numeric",
+      "target": 50,
+      "current": 12,
+      "unit": "projects",
+      "ownerDept": [
+        "Conservation"
+      ],
+      "tacticId": "TAC-001",
+      "notes": "Cumulative count of priority projects toward 50+ by 2030",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-001",
+      "objectiveId": "OBJ-001"
+    },
+    {
+      "id": "KPI-003",
+      "name": "# of landowners and professionals engaged",
+      "metricType": "numeric",
+      "target": 70,
+      "current": 15,
+      "unit": "contacts",
+      "ownerDept": [
+        "Conservation"
+      ],
+      "tacticId": "TAC-002",
+      "notes": "Landowners and advisors engaged through outreach events and site visits",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-001",
+      "objectiveId": "OBJ-001"
+    },
+    {
+      "id": "KPI-004",
+      "name": "% of conservation easements monitored",
+      "metricType": "numeric",
+      "target": 100,
+      "current": 85,
+      "unit": "%",
+      "ownerDept": [
+        "Stewardship"
+      ],
+      "tacticId": "TAC-001",
+      "notes": "Annual monitoring of all conservation easements to ensure 100% compliance",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-001",
+      "objectiveId": "OBJ-001"
+    },
+    {
+      "id": "KPI-005",
+      "name": "# of restoration projects funded/underway",
+      "metricType": "numeric",
+      "target": 10,
+      "current": 3,
+      "unit": "projects",
+      "ownerDept": [
+        "Stewardship"
+      ],
+      "tacticId": "TAC-001",
+      "notes": "Number of funded habitat restoration projects on conserved lands",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-001",
+      "objectiveId": "OBJ-001"
+    },
+    {
+      "id": "KPI-006",
+      "name": "Landowner stewardship gatherings hosted",
+      "metricType": "numeric",
+      "target": 2,
+      "current": 1,
+      "unit": "events",
+      "ownerDept": [
+        "Stewardship"
+      ],
+      "tacticId": "TAC-001",
+      "notes": "Annual gatherings to engage and support conservation landowners",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-001",
+      "objectiveId": "OBJ-001"
+    },
+    {
+      "id": "KPI-007",
+      "name": "Volunteer & community participants engaged",
+      "metricType": "numeric",
+      "target": 500,
+      "current": 250,
+      "unit": "people",
+      "ownerDept": [
+        "Engagement"
+      ],
+      "tacticId": "TAC-014",
+      "notes": "Annual count of volunteers, students, and community participants engaged",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-006",
+      "objectiveId": "OBJ-002"
+    },
+    {
+      "id": "KPI-008",
+      "name": "Volunteer stewardship events hosted",
+      "metricType": "numeric",
+      "target": 20,
+      "current": 8,
+      "unit": "events",
+      "ownerDept": [
+        "Engagement"
+      ],
+      "tacticId": "TAC-014",
+      "notes": "Number of volunteer events or workshops hosted per year",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-006",
+      "objectiveId": "OBJ-002"
+    },
+    {
+      "id": "KPI-009",
+      "name": "New community conservation site in Idaho",
+      "metricType": "numeric",
+      "target": 1,
+      "current": 0,
+      "unit": "site",
+      "ownerDept": [
+        "Conservation"
+      ],
+      "tacticId": "TAC-018",
+      "notes": "Establishment of a high-visibility Idaho site for community conservation",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-007",
+      "objectiveId": "OBJ-002"
+    },
+    {
+      "id": "KPI-010",
+      "name": "Tribal partnership engagement events",
+      "metricType": "numeric",
+      "target": 1,
+      "current": 0,
+      "unit": "events",
+      "ownerDept": [
+        "Executive"
+      ],
+      "tacticId": "TAC-020",
+      "notes": "Annual or biannual gatherings with Tribal partners to support shared conservation goals",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-008",
+      "objectiveId": "OBJ-002"
+    },
+    {
+      "id": "KPI-011",
+      "name": "Tribal representation in governance",
+      "metricType": "numeric",
+      "target": 1,
+      "current": 0,
+      "unit": "members",
+      "ownerDept": [
+        "Board"
+      ],
+      "tacticId": "TAC-021",
+      "notes": "Inclusion of Tribal members in board/advisory roles",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-008",
+      "objectiveId": "OBJ-002"
+    },
+    {
+      "id": "KPI-012",
+      "name": "Future Conservation Leaders internships",
+      "metricType": "numeric",
+      "target": 5,
+      "current": 0,
+      "unit": "interns",
+      "ownerDept": [
+        "Engagement"
+      ],
+      "tacticId": "TAC-022",
+      "notes": "Internship program for underrepresented groups in conservation",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-010",
+      "objectiveId": "OBJ-002"
+    },
+    {
+      "id": "KPI-013",
+      "name": "Total active members/donors",
+      "metricType": "numeric",
+      "target": 1500,
+      "current": 1200,
+      "unit": "donors",
+      "ownerDept": [
+        "Development"
+      ],
+      "tacticId": "TAC-025",
+      "notes": "Annual number of individual donors contributing to INLC",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-014",
+      "objectiveId": "OBJ-003"
+    },
+    {
+      "id": "KPI-014",
+      "name": "Major donors engaged",
+      "metricType": "numeric",
+      "target": 50,
+      "current": 35,
+      "unit": "donors",
+      "ownerDept": [
+        "Development"
+      ],
+      "tacticId": "TAC-025",
+      "notes": "Number of major donor prospects actively cultivated",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-014",
+      "objectiveId": "OBJ-003"
+    },
+    {
+      "id": "KPI-015",
+      "name": "Private philanthropy % of revenue",
+      "metricType": "numeric",
+      "target": 60,
+      "current": 55,
+      "unit": "%",
+      "ownerDept": [
+        "Development"
+      ],
+      "tacticId": "TAC-025",
+      "notes": "Proportion of annual revenue from private donations, grants, and bequests",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-014",
+      "objectiveId": "OBJ-003"
+    },
+    {
+      "id": "KPI-016",
+      "name": "Annual operating revenue",
+      "metricType": "numeric",
+      "target": 3000000,
+      "current": 2500000,
+      "unit": "$",
+      "ownerDept": [
+        "Finance"
+      ],
+      "tacticId": "TAC-025",
+      "notes": "Total annual revenue supporting operations and growth",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-014",
+      "objectiveId": "OBJ-003"
+    },
+    {
+      "id": "KPI-017",
+      "name": "Office/facilities expansion",
+      "metricType": "numeric",
+      "target": 1,
+      "current": 0,
+      "unit": "completion",
+      "ownerDept": [
+        "Operations"
+      ],
+      "tacticId": "TAC-009",
+      "notes": "Secure and occupy expanded office facilities by 2027",
+      "lastUpdated": "1970-01-01T00:00:45.947Z",
+      "strategyId": "STR-012",
+      "objectiveId": "OBJ-002"
+    }
+  ],
+  "lastSync": "2025-11-13T22:37:37.638Z",
+  "version": "1.0"
+}

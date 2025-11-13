@@ -1,0 +1,261 @@
+<div class="container page__container">
+  <div class="page-section">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h1 class="h2">Data Update</h1>
+        <p class="text-muted">Update KPI targets and current values</p>
+      </div>
+      <div>
+        <button class="btn btn-outline-secondary" id="exportBtn">
+          <i class="fa fa-download mr-1"></i> Export CSV
+        </button>
+        <button class="btn btn-outline-secondary ml-2" id="importBtn">
+          <i class="fa fa-upload mr-1"></i> Import CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- Entity Picker -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Select Entity to Update</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="objectiveSelect">Objective</label>
+              <select class="form-control" id="objectiveSelect">
+                <option value="">-- Select Objective --</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="strategySelect">Strategy</label>
+              <select class="form-control" id="strategySelect" disabled>
+                <option value="">-- Select Strategy --</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="tacticSelect">Tactic (Optional)</label>
+              <select class="form-control" id="tacticSelect" disabled>
+                <option value="">-- Select Tactic --</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI Editor -->
+    <div id="kpiEditorSection" style="display: none;">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="card-title mb-0">KPI Editor</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="kpiSelect">Select KPI to Edit</label>
+            <select class="form-control" id="kpiSelect">
+              <option value="">-- Select KPI --</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Edit Form -->
+      <div id="kpiEditForm" style="display: none;">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0" id="editingKPIName">Editing KPI</h5>
+              <span class="badge" id="editingKPIStatus"></span>
+            </div>
+          </div>
+          <div class="card-body">
+            <form id="kpiForm">
+              <input type="hidden" id="kpiId">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="kpiName">KPI Name</label>
+                    <input type="text" class="form-control" id="kpiName" readonly>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="kpiMetricType">Metric Type</label>
+                    <input type="text" class="form-control" id="kpiMetricType" readonly>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Numeric KPI Fields -->
+              <div id="numericFields">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="kpiTarget">Target <span class="text-danger">*</span></label>
+                      <input type="number" class="form-control" id="kpiTarget" step="any" required>
+                      <small class="form-text text-muted">Must be ≥ 0</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="kpiCurrent">Current <span class="text-danger">*</span></label>
+                      <input type="number" class="form-control" id="kpiCurrent" step="any" required>
+                      <small class="form-text text-muted">Must be ≥ 0</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="kpiUnit">Unit</label>
+                      <input type="text" class="form-control" id="kpiUnit" placeholder="e.g., acres, %, $">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Milestone KPI Fields -->
+              <div id="milestoneFields" style="display: none;">
+                <div class="form-group">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="milestoneCompleted">
+                    <label class="custom-control-label" for="milestoneCompleted">
+                      Mark as Completed
+                    </label>
+                  </div>
+                  <small class="form-text text-muted">Toggle to mark milestone as complete (1) or not started (0)</small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="kpiOwnerDept">Owner Department(s)</label>
+                    <input type="text" class="form-control" id="kpiOwnerDept" placeholder="Comma-separated">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="kpiStart">Start Date</label>
+                    <input type="date" class="form-control" id="kpiStart">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="kpiEnd">End Date</label>
+                    <input type="date" class="form-control" id="kpiEnd">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="kpiNotes">Notes</label>
+                <textarea class="form-control" id="kpiNotes" rows="3"></textarea>
+              </div>
+
+              <!-- Live Preview -->
+              <div class="alert alert-light border">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="mb-0">Live Preview</h6>
+                  <span class="badge" id="previewStatus"></span>
+                </div>
+                <div class="progress mb-2" style="height: 20px;">
+                  <div class="progress-bar" id="previewProgressBar" role="progressbar" style="width: 0%;">
+                    <span id="previewPercent">0%</span>
+                  </div>
+                </div>
+                <small class="text-muted" id="previewWarning"></small>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                  <button type="button" class="btn btn-outline-secondary ml-2" id="resetBtn">Reset</button>
+                </div>
+                <button type="submit" class="btn btn-primary" id="saveBtn">
+                  <i class="fa fa-save mr-1"></i> Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unsaved Changes Warning -->
+    <div id="unsavedWarning" class="alert alert-warning" style="display: none;">
+      <i class="fa fa-exclamation-triangle mr-2"></i>
+      You have unsaved changes. Please save or cancel before leaving.
+    </div>
+
+  </div>
+</div>
+
+<!-- Diff Preview Modal -->
+<div class="modal fade" id="diffModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Review Changes</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted">Please review the changes before saving:</p>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Old Value</th>
+              <th>New Value</th>
+            </tr>
+          </thead>
+          <tbody id="diffTableBody">
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmSaveBtn">
+          <i class="fa fa-check mr-1"></i> Confirm & Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CSV Import Modal -->
+<div class="modal fade" id="importModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Import KPI Data from CSV</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="csvFileInput">Select CSV File</label>
+          <input type="file" class="form-control-file" id="csvFileInput" accept=".csv">
+          <small class="form-text text-muted">
+            CSV should have columns: id, target, current, unit, ownerDept, start, end, notes
+          </small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="importConfirmBtn">Import</button>
+      </div>
+    </div>
+  </div>
+</div>
