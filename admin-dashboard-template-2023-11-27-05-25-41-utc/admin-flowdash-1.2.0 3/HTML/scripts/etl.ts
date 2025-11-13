@@ -1,7 +1,13 @@
 /**
  * ETL Script for INLC Strategic Plan Data
  *
- * Reads Excel files from data-source/ and generates normalized JSON files:
+ * Reads from Updated_SharePoint_Import_Template.xlsx with separate sheets:
+ * - Objectives
+ * - Strategies
+ * - Tactics
+ * - KPIs
+ *
+ * Generates normalized JSON files:
  * - data/objectives.json (hierarchical structure)
  * - data/kpis.json (flat list for quick lookup)
  *
@@ -61,8 +67,7 @@ const DATA_SOURCE_DIR = path.join(__dirname, '../data-source');
 const DATA_DIR = path.join(__dirname, '../data');
 const BACKUP_DIR = path.join(DATA_DIR, 'backups');
 
-const COMBINED_OBJECTIVES_PATH = path.join(DATA_SOURCE_DIR, 'Combined Objectives.xlsx');
-const TRACKING_PATH = path.join(DATA_SOURCE_DIR, 'INLC_Strategic_Plan_Tracking.xlsx');
+const SHAREPOINT_TEMPLATE_PATH = path.join(DATA_SOURCE_DIR, 'Updated_SharePoint_Import_Template.xlsx');
 
 const OBJECTIVES_OUTPUT = path.join(DATA_DIR, 'objectives.json');
 const KPIS_OUTPUT = path.join(DATA_DIR, 'kpis.json');
@@ -104,202 +109,193 @@ function createBackup() {
 }
 
 /**
- * Helper function to get value from row with multiple possible column names
+ * Parse Objectives sheet
  */
-function getColumnValue(row: any, ...possibleNames: string[]): any {
-  for (const name of possibleNames) {
-    // Check exact match
-    if (row[name] !== undefined && row[name] !== null && row[name] !== '') {
-      return row[name];
-    }
-    // Check case-insensitive match
-    const lowerName = name.toLowerCase();
-    const key = Object.keys(row).find(k => k.toLowerCase() === lowerName);
-    if (key && row[key] !== undefined && row[key] !== null && row[key] !== '') {
-      return row[key];
-    }
-  }
-  return undefined;
-}
+function parseObjectives(workbook: xlsx.WorkBook): Map<string, Objective> {
+  const objectives = new Map<string, Objective>();
 
-/**
- * Parse ID hierarchy to extract components
- * Example: "3.5.6.1" -> { objectiveId: "3", strategyId: "3.5", tacticId: "3.5.6" }
- */
-function parseIdHierarchy(id: string): { objectiveId: string; strategyId?: string; tacticId?: string } {
-  const parts = id.split('.');
-  return {
-    objectiveId: parts[0],
-    strategyId: parts.length >= 2 ? parts.slice(0, 2).join('.') : undefined,
-    tacticId: parts.length >= 3 ? parts.slice(0, 3).join('.') : undefined
-  };
-}
-
-/**
- * Parse Combined Objectives.xlsx to build hierarchy structure
- */
-function parseCombinedObjectives(): Map<string, Objective | Strategy | Tactic> {
-  const entities = new Map<string, Objective | Strategy | Tactic>();
-
-  if (!fs.existsSync(COMBINED_OBJECTIVES_PATH)) {
-    console.warn(`⚠ Combined Objectives file not found: ${COMBINED_OBJECTIVES_PATH}`);
-    console.warn('  Creating empty structure. Please upload the file and re-run ETL.');
-    return entities;
+  const sheet = workbook.Sheets['Objectives'];
+  if (!sheet) {
+    console.warn('⚠ Objectives sheet not found');
+    return objectives;
   }
 
-  const workbook = xlsx.readFile(COMBINED_OBJECTIVES_PATH);
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
-  const rows: any[] = xlsx.utils.sheet_to_json(worksheet);
-
-  console.log(`✓ Reading ${rows.length} rows from Combined Objectives`);
-  console.log(`  Sheet: "${sheetName}"`);
-
-  // Show available columns for first row
-  if (rows.length > 0) {
-    console.log(`  Available columns: ${Object.keys(rows[0]).join(', ')}`);
-  }
+  const rows: any[] = xlsx.utils.sheet_to_json(sheet);
+  console.log(`✓ Reading ${rows.length} rows from Objectives sheet`);
+  console.log(`  Columns: ${rows.length > 0 ? Object.keys(rows[0]).join(', ') : 'none'}`);
 
   rows.forEach((row, idx) => {
     try {
-      // Try multiple possible column names
-      const id = getColumnValue(row, 'ID', 'Id', 'id', 'Number', 'Num', '#');
-      const name = getColumnValue(row, 'Name', 'Title', 'name', 'title', 'Objective', 'Strategy', 'Tactic', 'Goal');
-      const description = getColumnValue(row, 'Description', 'description', 'desc', 'Details', 'details', 'Notes', 'notes');
-      const type = getColumnValue(row, 'Type', 'type', 'Level', 'level', 'Category', 'category');
+      const id = String(row.ObjectiveID || '').trim();
+      const name = String(row.Title || '').trim();
+      const description = String(row.Description || '').trim() || undefined;
 
-      const idStr = id ? String(id).trim() : '';
-      const nameStr = name ? String(name).trim() : '';
-      const descStr = description ? String(description).trim() : undefined;
-      const typeStr = type ? String(type).trim().toLowerCase() : '';
-
-      if (!idStr || !nameStr) {
-        // Only warn for first 5 empty rows
-        if (idx < 5) {
-          console.warn(`  ⚠ Row ${idx + 2}: Missing ID or Name, skipping`);
-        }
+      if (!id || !name) {
+        if (idx < 3) console.warn(`  ⚠ Row ${idx + 2}: Missing ObjectiveID or Title`);
         return;
       }
 
-      const parts = idStr.split('.');
-
-      if (parts.length === 1 || typeStr === 'objective' || typeStr === 'goal') {
-        // Objective
-        entities.set(idStr, {
-          id: idStr,
-          name: nameStr,
-          description: descStr,
-          strategies: [],
-          lastUpdated: new Date().toISOString()
-        });
-      } else if (parts.length === 2 || typeStr === 'strategy') {
-        // Strategy
-        entities.set(idStr, {
-          id: idStr,
-          name: nameStr,
-          description: descStr,
-          tactics: [],
-          kpis: []
-        });
-      } else if (parts.length >= 3 || typeStr === 'tactic' || typeStr === 'action') {
-        // Tactic
-        entities.set(idStr, {
-          id: idStr,
-          name: nameStr,
-          description: descStr,
-          kpis: []
-        });
-      }
+      objectives.set(id, {
+        id,
+        name,
+        description,
+        strategies: [],
+        lastUpdated: new Date().toISOString()
+      });
     } catch (err) {
-      console.error(`  ✗ Error parsing row ${idx + 2}:`, err);
+      console.error(`  ✗ Error parsing Objective row ${idx + 2}:`, err);
     }
   });
 
-  console.log(`✓ Parsed ${entities.size} entities from Combined Objectives`);
-  return entities;
+  console.log(`✓ Parsed ${objectives.size} objectives`);
+  return objectives;
 }
 
 /**
- * Parse INLC_Strategic_Plan_Tracking.xlsx to extract KPI data
+ * Parse Strategies sheet
  */
-function parseTrackingData(): KPI[] {
-  const kpis: KPI[] = [];
+function parseStrategies(workbook: xlsx.WorkBook): Map<string, Strategy> {
+  const strategies = new Map<string, Strategy>();
 
-  if (!fs.existsSync(TRACKING_PATH)) {
-    console.warn(`⚠ Tracking file not found: ${TRACKING_PATH}`);
-    console.warn('  No KPI data will be imported. Please upload the file and re-run ETL.');
-    return kpis;
+  const sheet = workbook.Sheets['Strategies'];
+  if (!sheet) {
+    console.warn('⚠ Strategies sheet not found');
+    return strategies;
   }
 
-  const workbook = xlsx.readFile(TRACKING_PATH);
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
-  const rows: any[] = xlsx.utils.sheet_to_json(worksheet);
-
-  console.log(`✓ Reading ${rows.length} rows from Tracking data`);
-  console.log(`  Sheet: "${sheetName}"`);
-
-  // Show available columns for first row
-  if (rows.length > 0) {
-    console.log(`  Available columns: ${Object.keys(rows[0]).join(', ')}`);
-  }
+  const rows: any[] = xlsx.utils.sheet_to_json(sheet);
+  console.log(`✓ Reading ${rows.length} rows from Strategies sheet`);
 
   rows.forEach((row, idx) => {
     try {
-      // Try multiple possible column names
-      const id = getColumnValue(row, 'ID', 'Id', 'id', 'Number', 'Num', '#', 'KPI ID', 'Metric ID');
-      const name = getColumnValue(row, 'Name', 'KPI', 'Metric', 'name', 'kpi', 'metric', 'Title', 'Indicator', 'Measure');
+      const id = String(row.StrategyID || '').trim();
+      const parentId = String(row.ParentObjectiveID || '').trim();
+      const name = String(row.Title || '').trim();
+      const description = String(row.Description || '').trim() || undefined;
 
-      const idStr = id ? String(id).trim() : '';
-      const nameStr = name ? String(name).trim() : '';
-
-      if (!idStr || !nameStr) {
-        // Only warn for first 5 empty rows
-        if (idx < 5) {
-          console.warn(`  ⚠ Row ${idx + 2}: Missing ID or Name, skipping`);
-        }
+      if (!id || !name) {
+        if (idx < 3) console.warn(`  ⚠ Row ${idx + 2}: Missing StrategyID or Title`);
         return;
       }
 
-      const metricTypeRaw = getColumnValue(row, 'Metric Type', 'MetricType', 'Type', 'type', 'Kind');
-      const metricTypeStr = metricTypeRaw ? String(metricTypeRaw).trim().toLowerCase() : 'numeric';
-      const metricType: MetricType = metricTypeStr.includes('milestone') ? 'milestone' : 'numeric';
+      strategies.set(id, {
+        id,
+        name,
+        description,
+        tactics: [],
+        kpis: []
+      });
+    } catch (err) {
+      console.error(`  ✗ Error parsing Strategy row ${idx + 2}:`, err);
+    }
+  });
 
-      const targetVal = getColumnValue(row, 'Target', 'target', 'Goal', 'goal', 'Target Value');
-      const currentVal = getColumnValue(row, 'Current', 'current', 'Actual', 'actual', 'Current Value', 'Progress');
-      const target = parseFloat(targetVal || '0') || 0;
-      const current = parseFloat(currentVal || '0') || 0;
+  console.log(`✓ Parsed ${strategies.size} strategies`);
+  return strategies;
+}
 
-      const unitVal = getColumnValue(row, 'Unit', 'unit', 'Units', 'Measure', 'UOM');
-      const unit = unitVal ? String(unitVal).trim() : undefined;
+/**
+ * Parse Tactics sheet
+ */
+function parseTactics(workbook: xlsx.WorkBook): Map<string, Tactic> {
+  const tactics = new Map<string, Tactic>();
 
-      const ownerVal = getColumnValue(row, 'Owner', 'owner', 'Owner Dept', 'OwnerDept', 'Department', 'Responsible', 'Lead');
-      const ownerDeptRaw = ownerVal ? String(ownerVal).trim() : '';
-      const ownerDept = ownerDeptRaw ? ownerDeptRaw.split(/[,;]/).map(s => s.trim()).filter(Boolean) : undefined;
+  const sheet = workbook.Sheets['Tactics'];
+  if (!sheet) {
+    console.warn('⚠ Tactics sheet not found');
+    return tactics;
+  }
 
-      const startVal = getColumnValue(row, 'Start', 'start', 'Start Date', 'StartDate', 'Begin');
-      const endVal = getColumnValue(row, 'End', 'end', 'End Date', 'EndDate', 'Deadline', 'Due Date', 'Target Date');
+  const rows: any[] = xlsx.utils.sheet_to_json(sheet);
+  console.log(`✓ Reading ${rows.length} rows from Tactics sheet`);
 
-      const notesVal = getColumnValue(row, 'Notes', 'notes', 'Comments', 'comments', 'Description', 'Details');
-      const notes = notesVal ? String(notesVal).trim() : undefined;
+  rows.forEach((row, idx) => {
+    try {
+      const id = String(row.TacticID || '').trim();
+      const parentId = String(row.ParentStrategyID || '').trim();
+      const name = String(row.Title || '').trim();
+      const description = String(row.Description || '').trim() || undefined;
 
-      const hierarchy = parseIdHierarchy(idStr);
+      if (!id || !name) {
+        if (idx < 3) console.warn(`  ⚠ Row ${idx + 2}: Missing TacticID or Title`);
+        return;
+      }
 
+      tactics.set(id, {
+        id,
+        name,
+        description,
+        kpis: []
+      });
+    } catch (err) {
+      console.error(`  ✗ Error parsing Tactic row ${idx + 2}:`, err);
+    }
+  });
+
+  console.log(`✓ Parsed ${tactics.size} tactics`);
+  return tactics;
+}
+
+/**
+ * Parse KPIs sheet
+ */
+function parseKPIs(workbook: xlsx.WorkBook): KPI[] {
+  const kpis: KPI[] = [];
+
+  const sheet = workbook.Sheets['KPIs'];
+  if (!sheet) {
+    console.warn('⚠ KPIs sheet not found');
+    return kpis;
+  }
+
+  const rows: any[] = xlsx.utils.sheet_to_json(sheet);
+  console.log(`✓ Reading ${rows.length} rows from KPIs sheet`);
+  console.log(`  Columns: ${rows.length > 0 ? Object.keys(rows[0]).join(', ') : 'none'}`);
+
+  rows.forEach((row, idx) => {
+    try {
+      const id = String(row.KPI_ID || '').trim();
+      const name = String(row.Title || '').trim();
+      const parentTacticId = String(row.ParentTacticID || '').trim();
+      const description = String(row.Description || '').trim();
+
+      if (!id || !name) {
+        if (idx < 3) console.warn(`  ⚠ Row ${idx + 2}: Missing KPI_ID or Title`);
+        return;
+      }
+
+      // Determine metric type
+      const metricTypeRaw = String(row.Metric_Type || 'numeric').trim().toLowerCase();
+      const metricType: MetricType = metricTypeRaw.includes('milestone') ? 'milestone' : 'numeric';
+
+      // Parse numeric values
+      const target = parseFloat(row.Target_Value || '0') || 0;
+      const current = parseFloat(row.Current_Value || '0') || 0;
+      const unit = String(row.Unit || '').trim() || undefined;
+
+      // Parse owner department
+      const leadDept = String(row.Lead_Department || '').trim();
+      const ownerDept = leadDept ? leadDept.split(/[,;]/).map(s => s.trim()).filter(Boolean) : undefined;
+
+      // Parse dates
+      const lastUpdated = row.Last_Updated ? new Date(row.Last_Updated).toISOString() : new Date().toISOString();
+
+      // Determine parent IDs from hierarchy
+      // ParentTacticID links to Tactic, which links to Strategy, which links to Objective
+      const tacticId = parentTacticId || undefined;
+
+      // We'll determine strategyId and objectiveId when building hierarchy
       const kpi: KPI = {
-        id: idStr,
-        name: nameStr,
+        id,
+        name,
         metricType,
         target,
         current,
         unit,
         ownerDept,
-        start: startVal ? new Date(startVal).toISOString() : undefined,
-        end: endVal ? new Date(endVal).toISOString() : undefined,
-        objectiveId: hierarchy.objectiveId,
-        strategyId: hierarchy.strategyId,
-        tacticId: hierarchy.tacticId,
-        notes,
-        lastUpdated: new Date().toISOString()
+        tacticId,
+        notes: description || undefined,
+        lastUpdated
       };
 
       kpis.push(kpi);
@@ -308,63 +304,75 @@ function parseTrackingData(): KPI[] {
     }
   });
 
-  console.log(`✓ Parsed ${kpis.length} KPIs from Tracking data`);
+  console.log(`✓ Parsed ${kpis.length} KPIs`);
   return kpis;
 }
 
 /**
- * Build hierarchical structure by linking KPIs to Objectives/Strategies/Tactics
+ * Build hierarchical structure by linking entities
  */
 function buildHierarchy(
-  entities: Map<string, Objective | Strategy | Tactic>,
-  kpis: KPI[]
+  objectives: Map<string, Objective>,
+  strategies: Map<string, Strategy>,
+  tactics: Map<string, Tactic>,
+  kpis: KPI[],
+  workbook: xlsx.WorkBook
 ): Objective[] {
-  // Organize entities by type
-  const objectives = new Map<string, Objective>();
-  const strategies = new Map<string, Strategy>();
-  const tactics = new Map<string, Tactic>();
+  // First, link strategies to objectives using ParentObjectiveID
+  const strategiesSheet = workbook.Sheets['Strategies'];
+  if (strategiesSheet) {
+    const rows: any[] = xlsx.utils.sheet_to_json(strategiesSheet);
+    rows.forEach(row => {
+      const strategyId = String(row.StrategyID || '').trim();
+      const parentObjectiveId = String(row.ParentObjectiveID || '').trim();
 
-  entities.forEach((entity, id) => {
-    if ('strategies' in entity) {
-      objectives.set(id, entity as Objective);
-    } else if ('tactics' in entity) {
-      strategies.set(id, entity as Strategy);
-    } else if ('kpis' in entity) {
-      tactics.set(id, entity as Tactic);
-    }
-  });
+      if (strategyId && parentObjectiveId && strategies.has(strategyId) && objectives.has(parentObjectiveId)) {
+        const strategy = strategies.get(strategyId)!;
+        const objective = objectives.get(parentObjectiveId)!;
+        objective.strategies.push(strategy);
+      }
+    });
+  }
 
-  // Attach KPIs to appropriate entities
+  // Second, link tactics to strategies using ParentStrategyID
+  const tacticsSheet = workbook.Sheets['Tactics'];
+  if (tacticsSheet) {
+    const rows: any[] = xlsx.utils.sheet_to_json(tacticsSheet);
+    rows.forEach(row => {
+      const tacticId = String(row.TacticID || '').trim();
+      const parentStrategyId = String(row.ParentStrategyID || '').trim();
+
+      if (tacticId && parentStrategyId && tactics.has(tacticId) && strategies.has(parentStrategyId)) {
+        const tactic = tactics.get(tacticId)!;
+        const strategy = strategies.get(parentStrategyId)!;
+        strategy.tactics!.push(tactic);
+      }
+    });
+  }
+
+  // Third, link KPIs to tactics using ParentTacticID
   kpis.forEach(kpi => {
     if (kpi.tacticId && tactics.has(kpi.tacticId)) {
       const tactic = tactics.get(kpi.tacticId)!;
       if (!tactic.kpis) tactic.kpis = [];
       tactic.kpis.push(kpi);
-    } else if (kpi.strategyId && strategies.has(kpi.strategyId)) {
-      const strategy = strategies.get(kpi.strategyId)!;
-      if (!strategy.kpis) strategy.kpis = [];
-      strategy.kpis.push(kpi);
+
+      // Set parent IDs for KPI based on hierarchy
+      // Find which strategy this tactic belongs to
+      strategies.forEach(strategy => {
+        if (strategy.tactics && strategy.tactics.some(t => t.id === kpi.tacticId)) {
+          kpi.strategyId = strategy.id;
+
+          // Find which objective this strategy belongs to
+          objectives.forEach(objective => {
+            if (objective.strategies.some(s => s.id === strategy.id)) {
+              kpi.objectiveId = objective.id;
+            }
+          });
+        }
+      });
     } else {
-      console.warn(`  ⚠ KPI ${kpi.id} could not be linked to any entity`);
-    }
-  });
-
-  // Attach tactics to strategies
-  tactics.forEach(tactic => {
-    const strategyId = tactic.id.split('.').slice(0, 2).join('.');
-    if (strategies.has(strategyId)) {
-      const strategy = strategies.get(strategyId)!;
-      if (!strategy.tactics) strategy.tactics = [];
-      strategy.tactics.push(tactic);
-    }
-  });
-
-  // Attach strategies to objectives
-  strategies.forEach(strategy => {
-    const objectiveId = strategy.id.split('.')[0];
-    if (objectives.has(objectiveId)) {
-      const objective = objectives.get(objectiveId)!;
-      objective.strategies.push(strategy);
+      console.warn(`  ⚠ KPI ${kpi.id} has no valid ParentTacticID (${kpi.tacticId || 'empty'})`);
     }
   });
 
@@ -379,22 +387,37 @@ function main() {
   console.log('INLC Strategic Plan ETL');
   console.log('========================================\n');
 
+  // Check if file exists
+  if (!fs.existsSync(SHAREPOINT_TEMPLATE_PATH)) {
+    console.error(`✗ File not found: ${SHAREPOINT_TEMPLATE_PATH}`);
+    console.error('  Please ensure Updated_SharePoint_Import_Template.xlsx is in the data-source/ folder');
+    process.exit(1);
+  }
+
   // Ensure directories exist
   ensureDirectories();
 
   // Create backup of existing data
   createBackup();
 
-  // Parse source files
-  const entities = parseCombinedObjectives();
-  const kpis = parseTrackingData();
+  // Read workbook
+  console.log(`\n✓ Reading ${SHAREPOINT_TEMPLATE_PATH}`);
+  const workbook = xlsx.readFile(SHAREPOINT_TEMPLATE_PATH);
+  console.log(`  Available sheets: ${workbook.SheetNames.join(', ')}\n`);
+
+  // Parse each sheet
+  const objectives = parseObjectives(workbook);
+  const strategies = parseStrategies(workbook);
+  const tactics = parseTactics(workbook);
+  const kpis = parseKPIs(workbook);
 
   // Build hierarchy
-  const objectives = buildHierarchy(entities, kpis);
+  console.log('\n✓ Building hierarchy...');
+  const objectivesArray = buildHierarchy(objectives, strategies, tactics, kpis, workbook);
 
   // Prepare output data
   const objectivesData = {
-    objectives,
+    objectives: objectivesArray,
     lastSync: new Date().toISOString(),
     version: '1.0'
   };
@@ -413,10 +436,16 @@ function main() {
   console.log(`✓ Wrote KPIs to: ${KPIS_OUTPUT}`);
 
   // Summary
+  const totalStrategies = objectivesArray.reduce((sum, o) => sum + o.strategies.length, 0);
+  const totalTactics = objectivesArray.reduce((sum, o) =>
+    sum + o.strategies.reduce((sSum, s) => sSum + (s.tactics?.length || 0), 0), 0
+  );
+
   console.log('\n========================================');
   console.log('ETL Summary:');
-  console.log(`  Objectives: ${objectives.length}`);
-  console.log(`  Strategies: ${objectives.reduce((sum, o) => sum + o.strategies.length, 0)}`);
+  console.log(`  Objectives: ${objectivesArray.length}`);
+  console.log(`  Strategies: ${totalStrategies}`);
+  console.log(`  Tactics: ${totalTactics}`);
   console.log(`  KPIs: ${kpis.length}`);
   console.log('========================================\n');
 }
