@@ -34,7 +34,7 @@
     <script src="assets/js/rollup.js"></script>
     <script>
         // Load objectives data
-        fetch('/data/objectives.json')
+        fetch('../data/objectives.json')
             .then(response => response.json())
             .then(objectives => {
                 const container = document.getElementById('objectives-container');
