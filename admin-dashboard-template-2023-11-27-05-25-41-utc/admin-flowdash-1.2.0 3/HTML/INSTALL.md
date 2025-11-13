@@ -4,7 +4,7 @@ This guide will help you install and set up the INLC Strategic Dashboard.
 
 ## Prerequisites
 
-- **Node.js**: Version 16.x or 18.x (recommended)
+- **Node.js**: Version 16.x, 18.x, or 20.x (all supported)
   - Download from: https://nodejs.org/
   - Verify: `node --version`
 
@@ -223,18 +223,19 @@ If you encounter issues:
 ## System Requirements
 
 - **Operating System**: Windows 10/11, macOS 10.15+, or Linux
-- **Node.js**: 16.x or 18.x (LTS versions)
+- **Node.js**: 16.x, 18.x, or 20.x (LTS versions)
 - **RAM**: Minimum 4GB (8GB recommended for build process)
 - **Disk Space**: ~500MB for node_modules
 
 ## Notes
 
 - **Python**: No longer required! Dart Sass is pure JavaScript.
+- **Node.js 20 Compatible**: All dependencies work with Node.js 20.x (no fibers, no node-sass).
 - **Build Times**: First build may take 2-3 minutes. Subsequent builds are faster.
 - **Legacy Code**: Some template dependencies are older by design (Bootstrap 4, Vue 2). They remain stable and functional.
 
 ---
 
 **Last Updated**: November 2025
-**Node.js Compatibility**: 16.x - 18.x
+**Node.js Compatibility**: 16.x - 20.x
 **npm Compatibility**: 8.x+
