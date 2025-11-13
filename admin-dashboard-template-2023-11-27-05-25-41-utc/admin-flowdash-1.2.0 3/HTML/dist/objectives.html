@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INLC Strategic Plan - Objectives</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <style>
+        body { padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .objective-card { margin-bottom: 20px; padding: 20px; background: #fff; border: 1px solid #ddd; border-radius: 8px; }
+        .objective-title { font-size: 1.5em; font-weight: bold; margin-bottom: 10px; }
+        .strategy { padding: 15px; margin: 10px 0; background: #f8f9fa; border-left: 4px solid #007bff; }
+        .kpi { padding: 10px; margin: 5px 0; background: #fff; border: 1px solid #e0e0e0; }
+        .progress-bar { width: 100%; height: 24px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #28a745; transition: width 0.3s; }
+        .status-badge { padding: 4px 12px; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+        .status-on-track { background: #d4edda; color: #155724; }
+        .status-at-risk { background: #fff3cd; color: #856404; }
+        .status-off-track { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>INLC Strategic Plan Dashboard</h1>
+        <p>Strategic Objectives Overview</p>
+
+        <div id="objectives-container">
+            <p>Loading objectives...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js"></script>
+    <script src="assets/js/rollup.js"></script>
+    <script>
+        // Load objectives data
+        fetch('../data/objectives.json')
+            .then(response => response.json())
+            .then(objectives => {
+                const container = document.getElementById('objectives-container');
+
+                if (!objectives || objectives.length === 0) {
+                    container.innerHTML = '<p>No objectives data available. Please run: npm run etl</p>';
+                    return;
+                }
+
+                container.innerHTML = objectives.map(obj => {
+                    // Calculate objective progress
+                    const objProgress = calculateObjectiveProgress(obj);
+                    const statusClass = getStatusClass(objProgress);
+                    const statusText = getStatusText(objProgress);
+
+                    return `
+                        <div class="objective-card">
+                            <div class="objective-title">${escapeHtml(obj.title || obj.name || 'Untitled Objective')}</div>
+                            <p>${escapeHtml(obj.description || '')}</p>
+
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${objProgress}%"></div>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <span class="status-badge ${statusClass}">${statusText}</span>
+                                <span style="margin-left: 10px; font-weight: bold;">${objProgress.toFixed(1)}%</span>
+                            </div>
+
+                            ${renderStrategies(obj.strategies || [])}
+                        </div>
+                    `;
+                }).join('');
+            })
+            .catch(error => {
+                console.error('Error loading objectives:', error);
+                document.getElementById('objectives-container').innerHTML =
+                    '<p>Error loading objectives data. Please check the console for details.</p>';
+            });
+
+        function calculateObjectiveProgress(objective) {
+            if (!objective.strategies || objective.strategies.length === 0) return 0;
+
+            const strategyProgresses = objective.strategies.map(strategy => {
+                return calculateStrategyProgress(strategy);
+            });
+
+            const avg = strategyProgresses.reduce((a, b) => a + b, 0) / strategyProgresses.length;
+            return Math.round(avg * 100) / 100;
+        }
+
+        function calculateStrategyProgress(strategy) {
+            const kpis = [];
+
+            // Direct KPIs
+            if (strategy.kpis) {
+                kpis.push(...strategy.kpis);
+            }
+
+            // KPIs from tactics
+            if (strategy.tactics) {
+                strategy.tactics.forEach(tactic => {
+                    if (tactic.kpis) {
+                        kpis.push(...tactic.kpis);
+                    }
+                });
+            }
+
+            if (kpis.length === 0) return 0;
+
+            const kpiProgresses = kpis.map(kpi => {
+                if (kpi.metricType === 'milestone') {
+                    return kpi.current ? 100 : 0;
+                } else {
+                    if (kpi.target === 0) return 0;
+                    return Math.min(100, (kpi.current / kpi.target) * 100);
+                }
+            });
+
+            return kpiProgresses.reduce((a, b) => a + b, 0) / kpiProgresses.length;
+        }
+
+        function getStatusClass(progress) {
+            if (progress >= 70) return 'status-on-track';
+            if (progress >= 40) return 'status-at-risk';
+            return 'status-off-track';
+        }
+
+        function getStatusText(progress) {
+            if (progress >= 70) return 'On Track';
+            if (progress >= 40) return 'At Risk';
+            return 'Off Track';
+        }
+
+        function renderStrategies(strategies) {
+            if (!strategies || strategies.length === 0) return '';
+
+            return `
+                <div style="margin-top: 15px;">
+                    <strong>Strategies (${strategies.length}):</strong>
+                    ${strategies.map(s => {
+                        const progress = calculateStrategyProgress(s);
+                        return `
+                            <div class="strategy">
+                                <strong>${escapeHtml(s.title || s.name || 'Untitled Strategy')}</strong>
+                                <div class="progress-bar" style="margin-top: 5px;">
+                                    <div class="progress-fill" style="width: ${progress}%"></div>
+                                </div>
+                                <span style="font-size: 0.9em;">${progress.toFixed(1)}%</span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
