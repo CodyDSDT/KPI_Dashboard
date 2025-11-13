@@ -36,8 +36,11 @@
         // Load objectives data
         fetch('../data/objectives.json')
             .then(response => response.json())
-            .then(objectives => {
+            .then(data => {
                 const container = document.getElementById('objectives-container');
+
+                // Handle both {objectives: [...]} and [...] formats
+                const objectives = data.objectives || data;
 
                 if (!objectives || objectives.length === 0) {
                     container.innerHTML = '<p>No objectives data available. Please run: npm run etl</p>';
