@@ -221,7 +221,8 @@ describe('strategyPct - Strategy Percentage Calculation', () => {
     const strategy: Strategy = {
       id: '1.1',
       name: 'Test Strategy',
-      strategies: []
+      tactics: [],
+      kpis: []
     };
     expect(strategyPct(strategy)).toBe(0);
   });
@@ -432,9 +433,9 @@ describe('Utility Functions', () => {
       id: '1',
       name: 'Test Objective',
       strategies: [
-        { id: '1.1', name: 'Strategy 1', strategies: [] },
-        { id: '1.2', name: 'Strategy 2', strategies: [] },
-        { id: '1.3', name: 'Strategy 3', strategies: [] }
+        { id: '1.1', name: 'Strategy 1', tactics: [], kpis: [] },
+        { id: '1.2', name: 'Strategy 2', tactics: [], kpis: [] },
+        { id: '1.3', name: 'Strategy 3', tactics: [], kpis: [] }
       ]
     };
     expect(objectiveStrategyCount(objective)).toBe(3);
